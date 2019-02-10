@@ -1,0 +1,67 @@
+* Live Examples
+
+** Ruby Things
+
+Wouldn't it be nice if I had something like a =while= loop from Ruby?
+
+#+BEGIN_SRC elixir
+
+c "Ruby.exs"
+
+import Ruby
+
+pid = spawn fn -> while true do
+    receive do
+      :stop ->
+        IO.puts "Stopping..."
+        break
+      message ->
+        IO.puts "Got #{inspect message}"
+    end
+  end
+end
+
+send pid, :hello
+send pid, :utah
+send pid, :elixir
+
+send pid, :stop
+
+#+END_SRC
+
+Woah. Mind blown. We're gonna show you how to do stuff like this
+
+** Simple AST
+
+   # Note: run `C-c C-c` when cursor is in code block to evaluate
+
+#+BEGIN_SRC elixir
+
+quote do: 2 * (3 + 4)
+
+#+END_SRC
+
+[Go back to slides]
+
+** Regular Pip
+
+#+BEGIN_SRC elixir
+
+1..10 |> Enum.map(fn i -> IO.puts "Got i: #{i}"; i + 3 end)
+
+#+END_SRC
+
+
+** EndPipe
+
+#+BEGIN_SRC elixir
+
+c "EndPipe.exs"
+
+import EndPipe
+
+fn i -> IO.puts "Got i: #{i}"; i + 3 end ~>> Enum.map(1..10)
+
+fn i -> IO.puts "Got i: #{i}"; i + 3 end ~>> Enum.map(1..10) |> Enum.min ~>> Enum.take_random(?a..?z)
+
+#+END_SRC
