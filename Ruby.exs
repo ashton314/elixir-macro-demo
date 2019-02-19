@@ -1,6 +1,6 @@
 defmodule Ruby do
   
-  # Snarfed from _Metaprogramming Elixir_
+  # Snarfed from _Metaprogramming Elixir_ by Chris McCord
   defmacro while(expression, do: block) do
     quote do
       try do
