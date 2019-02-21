@@ -2,11 +2,17 @@
 
 ** Ruby Things
 
-Wouldn't it be nice if I had something like a =while= loop from Ruby?
+Wouldn't it be nice if I had something like a =while= loop from Ruby? I mean, this obviously doesn't work:
 
 #+BEGIN_SRC elixir
 
-c "Ruby.exs"
+while true, do: IO.puts("Hello")
+
+#+END_SRC
+
+It would be nice if I had some mythical Ruby module that I could import to get a while loop...
+
+#+BEGIN_SRC elixir
 
 import Ruby
 
@@ -29,7 +35,7 @@ send pid, :stop
 
 #+END_SRC
 
-Woah. Mind blown. We're gonna show you how to do stuff like this
+Woah. Mind blown. We're gonna show you how to do stuff like this.
 
 ** Simple AST
 
@@ -60,8 +66,8 @@ c "EndPipe.exs"
 
 import EndPipe
 
-fn i -> IO.puts "Got i: #{i}"; i + 3 end ~>> Enum.map(1..10)
+fn i -> IO.puts "Got i: #{i}"; i + 2 end ~>> Enum.map(1..10)
 
-fn i -> IO.puts "Got i: #{i}"; i + 3 end ~>> Enum.map(1..10) |> Enum.min ~>> Enum.take_random(?a..?z)
+fn i -> IO.puts "Got i: #{i}"; i + 2 end ~>> Enum.map(1..22) |> Enum.min ~>> Enum.take_random(?a..?z)
 
 #+END_SRC
